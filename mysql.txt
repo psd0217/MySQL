@@ -129,4 +129,29 @@ SELECT id,title,created,author FROM topic WHERE author='egoing' ORDER BY id DESC
 |  1 | MySQL  | 2020-12-14 15:04:45 | egoing |
 +----+--------+---------------------+--------+
 
+//UPDATE         주의! WHERE문을 빠트리면 모든 행에 적용된다!!!!
+UPDATE topic SET description='Oracle is ...', title='Oracle' WHERE id=2;
++----+------------+-------------------+---------------------+--------+---------------------------+
+| id | title      | description       | created             | author | profile                   |
++----+------------+-------------------+---------------------+--------+---------------------------+
+|  1 | MySQL      | MySQL is ...      | 2020-12-14 15:04:45 | egoing | developer                 |
+|  2 | Oracle     | Oracle is ...     | 2020-12-14 15:06:43 | egoing | developer                 |
+|  3 | SQL Server | SQL Server is ... | 2020-12-14 15:08:07 | soon   | developer2                |
+|  4 | PostgerSQL | PostgerSQL is ... | 2020-12-14 15:09:19 | duru   | database administrator    |
+|  5 | MongoDB    | MongoDB is ...    | 2020-12-14 15:10:21 | taeho  | data scientist, developer |
++----+------------+-------------------+---------------------+--------+---------------------------+
+
+//DELETE         주의! WHERE문을 빠트리면 모든 행에 적용된다!!!!
+DELETE FROM topic WHERE id=5;
++----+------------+-------------------+---------------------+--------+------------------------+
+| id | title      | description       | created             | author | profile                |
++----+------------+-------------------+---------------------+--------+------------------------+
+|  1 | MySQL      | MySQL is ...      | 2020-12-14 15:04:45 | egoing | developer              |
+|  2 | Oracle     | Oracle is ...     | 2020-12-14 15:06:43 | egoing | developer              |
+|  3 | SQL Server | SQL Server is ... | 2020-12-14 15:08:07 | soon   | developer2             |
+|  4 | PostgerSQL | PostgerSQL is ... | 2020-12-14 15:09:19 | duru   | database administrator |
++----+------------+-------------------+---------------------+--------+------------------------+
+
+
+
 
