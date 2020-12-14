@@ -53,3 +53,33 @@ CREATE TABLE topic(
     profile VARCHAR(100) NULL,  //프로필
      PRIMARY KEY(id),           //id컬럼은 고유한다, 중복시키지 않는다
 )
+
+//CRUD
+//Create 생성
+//Read 읽기
+//Update 변경
+//Delete 삭제
+
+//모든 테이블 보기
+SHOW TABLES;
+
+//테이블 보기
+DESC topic;
+
+//행 추가 (create row)
+//INSERT INTO `table_name`(column_1,column_2,...)
+//VALUES (value_1,value_2,...);
+INSERT INTO topic (title,description,created,author,profile)
+VALUES('MySQL','MySQL is ...', NOW(),'egoing','developer');
+INSERT INTO topic (title,description,created,author,profile)
+VALUES('ORACLE','ORACLE is ...', NOW(),'egoing','developer');
+INSERT INTO topic (title,description,created,author,profile)
+VALUES('SQL Server','SQL Server is ...', NOW(),'soon','developer2');
+INSERT INTO topic (title,description,created,author,profile)
+VALUES('PostgerSQL','PostgerSQL is ...', NOW(),'duru','database administrator');
+INSERT INTO topic (title,description,created,author,profile)
+VALUES('MongoDB','MongoDB is ...', NOW(),'taeho','data scientist, developer');
+
+
+//테이블 읽기
+SELECT * FROM topic;
