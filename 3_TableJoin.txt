@@ -1,0 +1,30 @@
+//테이블의 JOIN
+//두개의 테이블을 합성해라! topic.author_id 와 author.id가 같은 조건 
+SELECT * FROM topic LEFT JOIN author ON topic.author_id = author.id;
++----+------------+-------------------+---------------------+-----------+------+--------+---------------------------+
+| id | title      | description       | created             | author_id | id   | name   | profile                   |     
++----+------------+-------------------+---------------------+-----------+------+--------+---------------------------+     
+|  1 | MySQL      | MySQL is ...      | 2020-12-14 15:04:45 |         1 |    1 | egoing | developer                 |     
+|  2 | Oracle     | Oracle is ...     | 2020-12-14 15:06:43 |         1 |    1 | egoing | developer                 |     
+|  3 | SQL Server | SQL Server is ... | 2020-12-14 15:08:07 |         2 |    2 | soon   | developer2                |     
+|  4 | PostgerSQL | PostgerSQL is ... | 2020-12-14 15:09:19 |         3 |    3 | duru   | database administrator    |
+|  6 | MongoDB    | MongoDB is ...    | 2020-12-14 15:52:16 |         4 |    4 | taeho  | data scientist, developer |     
++----+------------+-------------------+---------------------+-----------+------+--------+---------------------------+
+
+//id,title,description,created,name,profile 만 출력하쟈!
+SELECT id,title,description,created,name,profile FROM topic LEFT JOIN author ON topic.author_id = author.id; 
+->> ERROR 1052 (23000): Column 'id' in field list is ambiguous 에러 발생!!!!
+///id 가 두 테이블에 있기 때문
+
+//id는 명확하게 topic에서 가져온다는걸 명시해준다.
+SELECT topic.id,title,description,created,name,profile FROM topic LEFT JOIN author ON topic.author_id = author.id;
++----+------------+-------------------+---------------------+--------+---------------------------+
+| id | title      | description       | created             | name   | profile                   |
++----+------------+-------------------+---------------------+--------+---------------------------+
+|  1 | MySQL      | MySQL is ...      | 2020-12-14 15:04:45 | egoing | developer                 |
+|  2 | Oracle     | Oracle is ...     | 2020-12-14 15:06:43 | egoing | developer                 |
+|  3 | SQL Server | SQL Server is ... | 2020-12-14 15:08:07 | soon   | developer2                |
+|  4 | PostgerSQL | PostgerSQL is ... | 2020-12-14 15:09:19 | duru   | database administrator    |
+|  6 | MongoDB    | MongoDB is ...    | 2020-12-14 15:52:16 | taeho  | data scientist, developer |
++----+------------+-------------------+---------------------+--------+---------------------------+
+

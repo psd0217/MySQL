@@ -1,0 +1,87 @@
+//새로운 테이블 추가
+CREATE TABLE comment(
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    description TEXT NULL,     
+    author_id INT(11) NULL,
+    PRIMARY KEY(id) 
+);
+
+INSERT INTO comment (id, description, author_id)
+VALUES(1, 'Test01010101010101010101', 1);
+INSERT INTO comment (id, description, author_id)
+VALUES(2, 'Test0202020202020202', 2);
+INSERT INTO comment (id, description, author_id)
+VALUES(3, 'Test03030303030303030303030303', 3);
+INSERT INTO comment (id, description, author_id)
+VALUES(4, 'Test04040404040440404040404', 4);
+INSERT INTO comment (id, description, author_id)
+VALUES(5, 'Test50505050505050050505050', 1);
+
+SELECT * FROM comment;
++----+--------------------------------+-----------+
+| id | description                    | author_id |
++----+--------------------------------+-----------+
+|  1 | Test01010101010101010101       |         1 |
+|  2 | Test0202020202020202           |         2 |
+|  3 | Test03030303030303030303030303 |         3 |
+|  4 | Test04040404040440404040404    |         4 |
+|  5 | Test50505050505050050505050    |         1 |
++----+--------------------------------+-----------+
+
+SELECT * FROM comment LEFT JOIN author ON comment.author_id = author.id;  
++----+--------------------------------+-----------+------+--------+---------------------------+
+| id | description                    | author_id | id   | name   | profile                   |
++----+--------------------------------+-----------+------+--------+---------------------------+
+|  1 | Test01010101010101010101       |         1 |    1 | egoing | developer                 |
+|  2 | Test0202020202020202           |         2 |    2 | soon   | developer2                |
+|  3 | Test03030303030303030303030303 |         3 |    3 | duru   | database administrator    |
+|  4 | Test04040404040440404040404    |         4 |    4 | taeho  | data scientist, developer |
+|  5 | Test50505050505050050505050    |         1 |    1 | egoing | developer                 |
++----+--------------------------------+-----------+------+--------+---------------------------+
+
+SELECT comment.id, description, name, profile  FROM comment LEFT JOIN author ON comment.author_id = author.id; 
++----+--------------------------------+--------+---------------------------+
+| id | description                    | name   | profile                   |
++----+--------------------------------+--------+---------------------------+
+|  1 | Test01010101010101010101       | egoing | developer                 |
+|  2 | Test0202020202020202           | soon   | developer2                |
+|  3 | Test03030303030303030303030303 | duru   | database administrator    |
+|  4 | Test04040404040440404040404    | taeho  | data scientist, developer |
+|  5 | Test50505050505050050505050    | egoing | developer                 |
++----+--------------------------------+--------+---------------------------+
+
+//author 변경
+UPDATE author SET profile='database administrator2' WHERE id = 3;
+
+SELECT * FROM author;
++----+--------+---------------------------+
+| id | name   | profile                   |
++----+--------+---------------------------+
+|  1 | egoing | developer                 |
+|  2 | soon   | developer2                |
+|  3 | duru   | database administrator2   |
+|  4 | taeho  | data scientist, developer |
++----+--------+---------------------------+
+
+SELECT comment.id, description, name, profile  FROM comment LEFT JOIN author ON comment.author_id = author.id;
++----+--------------------------------+--------+---------------------------+
+| id | description                    | name   | profile                   |
++----+--------------------------------+--------+---------------------------+
+|  1 | Test01010101010101010101       | egoing | developer                 |
+|  2 | Test0202020202020202           | soon   | developer2                |
+|  3 | Test03030303030303030303030303 | duru   | database administrator2   |
+|  4 | Test04040404040440404040404    | taeho  | data scientist, developer |
+|  5 | Test50505050505050050505050    | egoing | developer                 |
++----+--------------------------------+--------+---------------------------+
+
+SELECT topic.id,title,description,created,name,profile FROM topic LEFT JOIN author ON topic.author_id = author.id; 
++----+------------+-------------------+---------------------+--------+---------------------------+
+| id | title      | description       | created             | name   | profile                   |
++----+------------+-------------------+---------------------+--------+---------------------------+
+|  1 | MySQL      | MySQL is ...      | 2020-12-14 15:04:45 | egoing | developer                 |
+|  2 | Oracle     | Oracle is ...     | 2020-12-14 15:06:43 | egoing | developer                 |
+|  3 | SQL Server | SQL Server is ... | 2020-12-14 15:08:07 | soon   | developer2                |
+|  4 | PostgerSQL | PostgerSQL is ... | 2020-12-14 15:09:19 | duru   | database administrator2   |
+|  6 | MongoDB    | MongoDB is ...    | 2020-12-14 15:52:16 | taeho  | data scientist, developer |
++----+------------+-------------------+---------------------+--------+---------------------------+
+
