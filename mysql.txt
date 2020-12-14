@@ -1,0 +1,55 @@
+windows mysql 설치
+ - bitnami wamp 사용
+
+root 비밀번호 셋팅
+설치 경로 확인
+
+커멘드로 설치 경로 접근!
+.\mysql -uroot -p 명령어 사용
+비밀 번호 체크
+
+//opentutorials 이름을 가진 데이터베이스 생성
+CREATE DATABASE opentutorials;
+//opentutorials 이름을 가진 데이터베이스 제거
+DROP DATABASE opentutorials;
+
+//데이터베이스 확인
+SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| opentutorials      |
+| performance_schema |
+| sys                |
++--------------------+
+
+//데이터베이스 사용
+USE opentutorials;
+
+//SQL Structured Query Language  데이터베이스 서버에게 요청할때 사용하는 언어
+//S = 정리정돈 = 구조화된.  
+//Q = 요청
+//L = 언어
+//관계형 데이터베이스 공통 언어
+
+// 1. SQL은 쉽다.
+// 2. 중요하다. -> 관계형 데이터 베이스에서 공통적으로 사용하는 언어이다. 
+
+// table, 표
+// row, record, 행
+// column, 열
+
+
+//테이블 생성
+CREATE TABLE topic(
+    //이름 데이터타입(크기?길이?) 빈값허용 자동증가
+    id INT(11) NOT NULL AUTO_INCREMENT, //id
+    title VARCHAR(100) NOT NULL, //타이틀
+    description TEXT NULL,       //설명
+    created DATETIME NOT NULL,   //생성날짜
+    author VARCHAR(30) NULL,    //작가
+    profile VARCHAR(100) NULL,  //프로필
+     PRIMARY KEY(id),           //id컬럼은 고유한다, 중복시키지 않는다
+)
