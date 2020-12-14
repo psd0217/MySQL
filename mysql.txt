@@ -82,4 +82,51 @@ VALUES('MongoDB','MongoDB is ...', NOW(),'taeho','data scientist, developer');
 
 
 //테이블 읽기
-SELECT * FROM topic;
+SELECT * FROM topic; //topic 테이블의 모든행 출력
++----+------------+-------------------+---------------------+--------+---------------------------+
+| id | title      | description       | created             | author | profile                   |
++----+------------+-------------------+---------------------+--------+---------------------------+
+|  1 | MySQL      | MySQL is ...      | 2020-12-14 15:04:45 | egoing | developer                 |
+|  2 | ORACLE     | ORACLE is ...     | 2020-12-14 15:06:43 | egoing | developer                 |
+|  3 | SQL Server | SQL Server is ... | 2020-12-14 15:08:07 | soon   | developer2                |
+|  4 | PostgerSQL | PostgerSQL is ... | 2020-12-14 15:09:19 | duru   | database administrator    |
+|  5 | MongoDB    | MongoDB is ...    | 2020-12-14 15:10:21 | taeho  | data scientist, developer |
++----+------------+-------------------+---------------------+--------+---------------------------+
+
+//SELECT
+SELECT id,title,created,author FROM topic; // 보고싶은 컬럼만 검색
++----+------------+---------------------+--------+
+| id | title      | created             | author |
++----+------------+---------------------+--------+
+|  1 | MySQL      | 2020-12-14 15:04:45 | egoing |
+|  2 | ORACLE     | 2020-12-14 15:06:43 | egoing |
+|  3 | SQL Server | 2020-12-14 15:08:07 | soon   |
+|  4 | PostgerSQL | 2020-12-14 15:09:19 | duru   |
+|  5 | MongoDB    | 2020-12-14 15:10:21 | taeho  |
++----+------------+---------------------+--------+
+SELECT "soon", 1+1; // 표현되야할 컬럼  FROM은 생략가능!
++------+-----+
+| soon | 1+1 |
++------+-----+
+| soon |   2 |
++------+-----+
+
+// WHERE 검색  는 FROM 뒤에!
+SELECT id,title,created,author FROM topic WHERE author='soon'; 
++----+------------+---------------------+--------+
+| id | title      | created             | author |
++----+------------+---------------------+--------+
+|  3 | SQL Server | 2020-12-14 15:08:07 | soon   |
++----+------------+---------------------+--------+
+
+//ORDER BY 정렬  는 WHERE 뒤에!
+//ORDER BY 정렬컬럼 순(ASC)/역순(DESC)
+SELECT id,title,created,author FROM topic WHERE author='egoing' ORDER BY id DESC;
++----+--------+---------------------+--------+
+| id | title  | created             | author |
++----+--------+---------------------+--------+
+|  2 | ORACLE | 2020-12-14 15:06:43 | egoing |
+|  1 | MySQL  | 2020-12-14 15:04:45 | egoing |
++----+--------+---------------------+--------+
+
+
