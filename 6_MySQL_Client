@@ -1,0 +1,16 @@
+
+//mysql client종류
+
+//mysql moniter = 명력어기반 - 어디서든 가능, 명령어를 기억해야함
+//mysql workbench = GUI기반
+
+
+
+//mysql moniter
+//명령 루트계정 비번사용 호스트
+./mysql -uroot -p -hlocalhost
+Welcome to the MySQL monitor.
+
+//mysql workbench
+
+

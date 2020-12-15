@@ -1,0 +1,30 @@
+//database server
+//인터넷의미
+//각자 컴퓨터들이 인터넷으로 연결
+//한개의 컴퓨터의 능력을 초월?
+
+//요청과 응답
+
+//ex)Web
+//WEB Browser 주소창 google.com 엔터
+//도메인에 맞는 컴퓨터를 찾아서 요청정보에 대한 응답을 해준다.
+//반은 응답을 WEB Browser로 표시
+
+//요청하는쪽 client, 응답하는쪽 Server
+//WEB Client(Browser) <-> WEB,Game,Chatting Server
+
+//mysql Setup
+//database client, database server 두가지 설치
+
+./mysql -uroot -p //로 들어갈시 = client 
+
+
+
+
+
+
+
+
+
+
+
